@@ -1,12 +1,12 @@
 import React from "react";
 
 export const PokemonCard = ({
-  imgUrl,
-  name,
-  hp,
-  str,
-  weak,
-  happiness,
+  imgUrl = "",
+  name = "",
+  hp = 0,
+  str = 0,
+  weak = 0,
+  happiness = 0,
   mode = "Add",
   onClick = () => {}
 }) => (
@@ -20,20 +20,20 @@ export const PokemonCard = ({
   >
     <img src={imgUrl} alt="pokemon-card" />
     <div style={{ flexGrow: "2" }}>
-      <h4>{name}</h4>
+      <h4>{name || ""}</h4>
       <div>
         <p>HP</p>
-        {hp}
+        {hp || 0}
       </div>
       <div>
         <p>STR</p>
-        {str}
+        {str || 0}
       </div>
       <div>
         <p>Weak</p>
-        {weak}
+        {weak || 0}
       </div>
-      <div>{happiness}</div>
+      <div>{happiness || 0}</div>
     </div>
     <div>
       <button onClick={onClick}>{mode}</button>
