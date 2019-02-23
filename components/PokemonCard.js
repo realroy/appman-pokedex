@@ -36,7 +36,12 @@ export const PokemonCard = ({
       <div>{happiness || 0}</div>
     </div>
     <div>
-      <button onClick={onClick}>{mode}</button>
+      <button
+        style={{ border: "none", color: "#dc7777", background: "none" }}
+        onClick={onClick}
+      >
+        {mode}
+      </button>
     </div>
   </div>
 );
