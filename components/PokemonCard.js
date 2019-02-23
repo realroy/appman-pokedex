@@ -21,17 +21,17 @@ export const PokemonCard = ({
     <img src={imgUrl} alt="pokemon-card" />
     <div style={{ flexGrow: "2" }}>
       <h4>{name || ""}</h4>
-      <div>
-        <p>HP</p>
-        {hp || 0}
-      </div>
-      <div>
-        <p>STR</p>
-        {str || 0}
-      </div>
-      <div>
-        <p>Weak</p>
-        {weak || 0}
+      <div style={{ display: "flex" }}>
+        <div className="label">
+          <p>HP</p>
+          <p>STR</p>
+          <p>Weak</p>
+        </div>
+        <div className="bar-chart">
+          <p> {hp || 0}</p>
+          <p> {str || 0}</p>
+          <p> {weak || 0}</p>
+        </div>
       </div>
       <div>{happiness || 0}</div>
     </div>
