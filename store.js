@@ -44,7 +44,7 @@ export const removePokemon = id => ({
   payload: id
 });
 
-const calcHp = hp => (hp > 100 ? 100 : 0);
+const calcHp = hp => (hp > 100 ? 100 : hp);
 const calcStr = _ => 100;
 const calcWeakness = (weaknesses = []) =>
   weaknesses.reduce((prev, curr) => {
