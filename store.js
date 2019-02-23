@@ -73,9 +73,15 @@ export const preprocess = (cards = []) =>
     happiness: calsHappiness(c.hp, calcDamage(c.damage), calcWeakness(c.weak))
   }));
 
-export const fetchPokemons = () => dispatch => {
+export const fetchPokemons = (search = "") => dispatch => {
+  let url;
+  if (search === "") {
+    url = "http://localhost:3030/api/cards";
+  } else {
+    url = `http://localhost:3030/api/cards?name=${search}&type=${search}`;
+  }
   dispatch({ type: actionTypes.FETCH_POKEMONS });
-  fetch("http://localhost:3030/api/cards")
+  fetch(url)
     .then(res => res.json())
     .then(json => {
       dispatch({

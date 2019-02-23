@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
+import { debounce } from "lodash";
 
 import { Pokedex } from "../components/Pokedex";
 import { addPokemon, removePokemon, fetchPokemons } from "../store";
@@ -13,7 +14,8 @@ class Index extends React.Component {
   }
 
   state = {
-    modalIsOpen: false
+    modalIsOpen: false,
+    search: ""
   };
 
   openModal = () => this.setState({ modalIsOpen: true });
@@ -26,6 +28,11 @@ class Index extends React.Component {
     this.props.fetchPokemons();
   }
 
+  handleSearchChange = ({ target: { value } }) => {
+    this.setState({ search: value });
+    debounce(() => this.props.fetchPokemons(value), 300)();
+  };
+
   render() {
     return (
       <>
@@ -37,7 +44,12 @@ class Index extends React.Component {
           contentLabel="Example Modal"
         >
           <div>
-            <input type="search" id="search" />
+            <input
+              type="search"
+              onChange={this.handleSearchChange}
+              value={this.state.search}
+              id="search"
+            />
             <div>
               {this.props.all.map(x => (
                 <PokemonCard
