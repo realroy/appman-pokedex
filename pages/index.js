@@ -34,6 +34,7 @@ class Index extends React.Component {
   };
 
   render() {
+    const pokedexIds = this.props.pokedex.map(({ id }) => id) || [];
     return (
       <>
         <Pokedex {...this.props} />
@@ -46,18 +47,21 @@ class Index extends React.Component {
           <div>
             <input
               type="search"
+              placeholder="Find Pokemon"
               onChange={this.handleSearchChange}
               value={this.state.search}
               id="search"
             />
             <div>
-              {this.props.all.map(x => (
-                <PokemonCard
-                  key={x.id}
-                  {...x}
-                  onClick={_ => this.props.addPokemon(x)}
-                />
-              ))}
+              {this.props.all
+                .filter(({ id }) => !pokedexIds.includes(id))
+                .map(x => (
+                  <PokemonCard
+                    key={x.id}
+                    {...x}
+                    onClick={_ => this.props.addPokemon(x)}
+                  />
+                ))}
             </div>
           </div>
         </Modal>
