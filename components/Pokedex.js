@@ -3,7 +3,7 @@ import { PokemonCard } from "./PokemonCard";
 
 export const Pokedex = props => (
   <>
-    <h1>My Pokedex</h1>
+    <h1 style={{ textAlign: "center" }}>My Pokedex</h1>
     {props.pokedex.map(x => (
       <PokemonCard
         key={x.id}

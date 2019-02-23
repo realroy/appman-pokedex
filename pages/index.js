@@ -49,48 +49,49 @@ class Index extends React.Component {
             onRequestClose={this.closeModal}
             contentLabel="Example Modal"
           >
-            <div>
-              <input
-                type="search"
-                placeholder="Find Pokemon"
-                onChange={this.handleSearchChange}
-                value={this.state.search}
-                id="search"
-              />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div
+                style={{
+                  position: "fixed",
+                  width: "88%",
+                  backgroundColor: "white"
+                }}
+              >
+                <input
+                  style={{ width: "100%", padding: "8px" }}
+                  type="search"
+                  placeholder="Find Pokemon"
+                  onChange={this.handleSearchChange}
+                  value={this.state.search}
+                  id="search"
+                />
+              </div>
               <div>
-                {this.props.all
-                  .filter(({ id }) => !pokedexIds.includes(id))
-                  .map(x => (
-                    <PokemonCard
-                      key={x.id}
-                      {...x}
-                      onClick={_ => this.props.addPokemon(x)}
-                    />
-                  ))}
+                <div>
+                  {this.props.all
+                    .filter(({ id }) => !pokedexIds.includes(id))
+                    .map(x => (
+                      <PokemonCard
+                        key={x.id}
+                        {...x}
+                        onClick={_ => this.props.addPokemon(x)}
+                      />
+                    ))}
+                </div>
               </div>
             </div>
           </Modal>
           <br />
-          <div
+          <button
             style={{
-              display: "flex",
-              justifyContent: "center",
               backgroundColor: "#ec5656",
               color: "white",
               border: "none"
             }}
+            onClick={this.openModal}
           >
-            <button
-              style={{
-                backgroundColor: "#ec5656",
-                color: "white",
-                border: "none"
-              }}
-              onClick={this.openModal}
-            >
-              +
-            </button>
-          </div>
+            +
+          </button>
         </div>
       </>
     );
