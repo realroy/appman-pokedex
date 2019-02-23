@@ -10,11 +10,17 @@ export const PokemonCard = ({
   mode = "Add",
   onClick = () => {}
 }) => (
-  <>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      background: "#f3f4f7",
+      padding: "4px"
+    }}
+  >
     <img src={imgUrl} alt="pokemon-card" />
-    <button onClick={onClick}>{mode}</button>
-    <h4>{name}</h4>
-    <div>
+    <div style={{ flexGrow: "2" }}>
+      <h4>{name}</h4>
       <div>
         <p>HP</p>
         {hp}
@@ -29,5 +35,8 @@ export const PokemonCard = ({
       </div>
       <div>{happiness}</div>
     </div>
-  </>
+    <div>
+      <button onClick={onClick}>{mode}</button>
+    </div>
+  </div>
 );
