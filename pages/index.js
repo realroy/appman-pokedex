@@ -66,7 +66,7 @@ class Index extends React.Component {
                   id="search"
                 />
               </div>
-              <div>
+              <div style={{ marginTop: "36px" }}>
                 <div>
                   {this.props.all
                     .filter(({ id }) => !pokedexIds.includes(id))
